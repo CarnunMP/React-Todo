@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from "styled-components";
 
 const dummyTodoData = [
   {
@@ -12,6 +13,8 @@ const dummyTodoData = [
     completed: false
   }
 ];
+
+
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -27,7 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
+        
       </div>
     );
   }

@@ -113,6 +113,8 @@ const StyledToDoWiget = styled.div`
   }
 `;
 
+const localStorage = window.localStorage;
+
 const dummyTodoData = [
   {
     task: 'Organize Garage',
@@ -129,9 +131,18 @@ const dummyTodoData = [
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      todoArray: dummyTodoData
-    };
+
+    const startingData = localStorage.getItem("todoArray");
+    console.log(startingData);
+    if (startingData !== null) {
+      this.state = {
+        todoArray: JSON.parse(startingData),
+      }
+    } else {
+      this.state = {
+        todoArray: dummyTodoData
+      };
+    }
   }
 
   addTodo = (formValues, actions) => {
@@ -142,9 +153,16 @@ class App extends React.Component {
         completed: false,
       }
   
-      this.setState(currentState => ({
-        todoArray: currentState.todoArray.concat([newTodo])
-      }));
+
+      this.setState(currentState => {
+        const newTodoArray = currentState.todoArray.concat([newTodo]);
+
+        localStorage.setItem("todoArray", JSON.stringify(newTodoArray));
+
+        return ({
+          todoArray: newTodoArray,
+        });
+      });
     }
 
     actions.resetForm();
@@ -172,12 +190,15 @@ class App extends React.Component {
     this.setState(currentState => {
       const filteredTodoArray = currentState.todoArray.filter(item => item.completed === false);
 
+      localStorage.setItem("todoArray", JSON.stringify(filteredTodoArray));
+
       return ({ todoArray: filteredTodoArray });
     });
   };
 
   clearAll = event => {
     this.setState({todoArray: []});
+    localStorage.removeItem("todoArray");
   };
 
   render() {

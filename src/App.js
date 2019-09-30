@@ -33,9 +33,9 @@ class App extends React.Component {
     };
   }
 
-  addTodo = (event) => {
+  addTodo = (formValues, actions) => {
     const newTodo = {
-      task: event.addItemField,
+      task: formValues.addItemField,
       id: Date.now(),
       completed: false,
     }
@@ -43,6 +43,8 @@ class App extends React.Component {
     this.setState(currentState => ({
         todoArray: currentState.todoArray.concat([newTodo])
       }));
+
+    actions.resetForm();
   }
 
   render() {

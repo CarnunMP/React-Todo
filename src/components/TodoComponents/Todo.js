@@ -3,13 +3,14 @@ import React from "react";
 export default class Todo extends React.Component {
     constructor(props) {
         super(props);
-        this.item = props.item;
     }
 
     render() {
+        const {item, toggleCompleted} = this.props;
+
         return (
-            <div className="list-item">
-                <p>{this.item.task}</p>
+            <div className="list-item" onClick={toggleCompleted} id={item.id}>
+                <p>{item.task}</p>
             </div>
         )
     }

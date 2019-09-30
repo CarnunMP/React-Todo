@@ -46,7 +46,11 @@ class App extends React.Component {
       }));
 
     actions.resetForm();
-  }
+  };
+
+  toggleCompleted = event => {
+    console.log(event.currentTarget.id);
+  };
 
   render() {
     const { todoArray } = this.state;
@@ -56,7 +60,7 @@ class App extends React.Component {
         <div className="title">
           <h2>To-Do List</h2>
         </div>
-        <TodoList todoArray={todoArray} />
+        <TodoList todoArray={todoArray} toggleCompleted={this.toggleCompleted}/>
         <TodoForm addTodo={this.addTodo}/>
         <ClearForm />
       </StyledToDoWiget>

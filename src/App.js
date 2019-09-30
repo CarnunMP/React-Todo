@@ -24,7 +24,7 @@ const StyledToDoWiget = styled.div`
   background: linear-gradient(to top, #1F1C18, #8E0E00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   .title {
-    border-bottom: 2px solid black;
+    border-bottom: 1.5px solid black;
     height: 10%;
     width: 95%;
     margin-bottom: 2rem;
@@ -46,6 +46,10 @@ const StyledToDoWiget = styled.div`
     align-items: center;
     margin: 0 1rem 0.5rem 1rem;
     font-weight: bold;
+
+    p:hover {
+      color: red;
+    }
 
       .checkbox {
         height: 0.8rem;
@@ -72,6 +76,9 @@ const StyledToDoWiget = styled.div`
 
     input {
       border-radius: 2px;
+      border: 2px solid black;
+      padding-left: 0.5rem;
+      margin-top: 0.5rem;
       margin-right: 0.5rem;
       background: none;
       max-width: 80%;
@@ -101,6 +108,7 @@ const StyledToDoWiget = styled.div`
 
     &:hover {
       cursor: pointer;
+      color: red;
     }
   }
 `;

@@ -1,10 +1,6 @@
 import React from "react";
 
 export default class ClearForm extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {clearCompleted, clearAll} = this.props;
         return (

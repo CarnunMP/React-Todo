@@ -42,14 +42,29 @@ class App extends React.Component {
     }
 
     this.setState(currentState => ({
-        todoArray: currentState.todoArray.concat([newTodo])
-      }));
+      todoArray: currentState.todoArray.concat([newTodo])
+    }));
 
     actions.resetForm();
   };
 
   toggleCompleted = event => {
-    console.log(event.currentTarget.id);
+    const currentItemId = event.currentTarget.id;
+    // Question: Why is 'event' not _visible_ inside setState()?
+
+    this.setState(currentState => {
+      const targetIndex = currentState.todoArray.findIndex(item => 
+        item.id.toString() === currentItemId
+      );
+      
+      console.log(targetIndex);
+      let newState = currentState.todoArray;
+      newState[targetIndex].completed ?
+        newState[targetIndex].completed = false :
+        newState[targetIndex].completed = true;
+
+      return ({ todoArray: newState });
+    });
   };
 
   render() {

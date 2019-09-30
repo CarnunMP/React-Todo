@@ -2,16 +2,13 @@ import React from "react";
 import { Formik, Form, Field} from "formik";
 
 export default class TodoForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.addTodo = props.addTodo;
-    }
-
     render() {
+        const { addTodo } = this.props;
+
         return (
             <Formik 
                 initialValues={{addItemField: ""}}
-                onSubmit={this.addTodo}
+                onSubmit={addTodo}
                 render={props => {
                     return (
                         <Form>

@@ -3,14 +3,14 @@ import styled from "styled-components";
 
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from './components/TodoComponents/TodoForm';
-import ClearForm from './components/TodoComponents/ClearForm';
+import ClearButtons from './components/TodoComponents/ClearButtons';
 
 const StyledToDoWiget = styled.div`
   margin: 0 auto;
   background: lightgray;
   margin-top: 3rem;
-  width: 20rem;
-  height: 25rem;
+  width: 25rem;
+  height: 30rem;
 
   .list-item {
     &:hover {
@@ -69,13 +69,20 @@ class App extends React.Component {
         item.id.toString() === currentItemId
       );
       
-      console.log(targetIndex);
       let newState = currentState.todoArray;
       newState[targetIndex].completed ?
         newState[targetIndex].completed = false :
         newState[targetIndex].completed = true;
 
       return ({ todoArray: newState });
+    });
+  };
+
+  clearCompleted = event => {
+    this.setState(currentState => {
+      const filteredTodoArray = currentState.todoArray.filter(item => item.completed === false);
+
+      return ({ todoArray: filteredTodoArray });
     });
   };
 
@@ -89,7 +96,7 @@ class App extends React.Component {
         </div>
         <TodoList todoArray={todoArray} toggleCompleted={this.toggleCompleted}/>
         <TodoForm addTodo={this.addTodo}/>
-        <ClearForm />
+        <ClearButtons clearCompleted={this.clearCompleted}/>
       </StyledToDoWiget>
     );
   }

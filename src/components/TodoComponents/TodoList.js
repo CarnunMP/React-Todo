@@ -1,6 +1,8 @@
 import React from "react";
 
-export default class Todo extends React.Component {
+import Todo from "./Todo";
+
+export default class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.todoArray = props.todoArray;
@@ -10,9 +12,7 @@ export default class Todo extends React.Component {
         return (
             <>
                 {this.todoArray.map(item => (
-                    <div className="list-item">
-                        <p>{item.task}</p>
-                    </div>
+                    <Todo item={item} />
                 ))}
             </>
         );

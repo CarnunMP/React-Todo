@@ -14,7 +14,12 @@ const dummyTodoData = [
   }
 ];
 
-
+const StyledToDoWiget = styled.div`
+  background: red;
+  width: 20rem;
+  height: 25rem;
+  margin: 0 auto;
+`;
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -29,9 +34,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <StyledToDoWiget>
         
-      </div>
+      </StyledToDoWiget>
     );
   }
 }

@@ -11,6 +11,18 @@ const StyledToDoWiget = styled.div`
   margin-top: 3rem;
   width: 20rem;
   height: 25rem;
+
+  .list-item {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 const dummyTodoData = [

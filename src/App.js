@@ -86,6 +86,10 @@ class App extends React.Component {
     });
   };
 
+  clearAll = event => {
+    this.setState({todoArray: []});
+  };
+
   render() {
     const { todoArray } = this.state;
 
@@ -96,7 +100,7 @@ class App extends React.Component {
         </div>
         <TodoList todoArray={todoArray} toggleCompleted={this.toggleCompleted}/>
         <TodoForm addTodo={this.addTodo}/>
-        <ClearButtons clearCompleted={this.clearCompleted}/>
+        <ClearButtons clearCompleted={this.clearCompleted} clearAll={this.clearAll}/>
       </StyledToDoWiget>
     );
   }

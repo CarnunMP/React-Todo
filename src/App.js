@@ -23,7 +23,7 @@ class App extends React.Component {
       todoArray: dummyTodoData
     };
   }
-  
+
   render() {
     return (
       <div>

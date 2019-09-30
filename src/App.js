@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from './components/TodoComponents/TodoForm';
+import ClearForm from './components/TodoComponents/ClearForm';
 
 const StyledToDoWiget = styled.div`
   margin: 0 auto;
@@ -57,6 +58,7 @@ class App extends React.Component {
         </div>
         <TodoList todoArray={todoArray} />
         <TodoForm addTodo={this.addTodo}/>
+        <ClearForm />
       </StyledToDoWiget>
     );
   }

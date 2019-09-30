@@ -1,6 +1,5 @@
 import React from "react";
 import { Formik, Form, Field} from "formik";
-import * as yup from "yup";
 
 export default class TodoForm extends React.Component {
     constructor(props) {

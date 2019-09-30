@@ -1,6 +1,16 @@
 import React from 'react';
 import styled from "styled-components";
 
+import TodoList from "./components/TodoComponents/TodoList";
+
+const StyledToDoWiget = styled.div`
+  margin: 0 auto;
+  background: lightgray;
+  margin-top: 3rem;
+  width: 20rem;
+  height: 25rem;
+`;
+
 const dummyTodoData = [
   {
     task: 'Organize Garage',
@@ -14,17 +24,7 @@ const dummyTodoData = [
   }
 ];
 
-const StyledToDoWiget = styled.div`
-  background: red;
-  width: 20rem;
-  height: 25rem;
-  margin: 0 auto;
-`;
-
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   constructor(props) {
     super(props);
     this.state = {
@@ -33,9 +33,13 @@ class App extends React.Component {
   }
 
   render() {
+    const { todoArray } = this.state;
     return (
       <StyledToDoWiget>
-        
+        <div className="title">
+          <h2>To-Do List</h2>
+        </div>
+        <TodoList todoArray={todoArray} />
       </StyledToDoWiget>
     );
   }

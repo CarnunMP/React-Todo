@@ -8,8 +8,14 @@ export default class Todo extends React.Component {
             <div className="list-item" onClick={toggleCompleted} id={item.id}>
                 {
                     item.completed ?
-                        <p style={{textDecoration: "line-through"}}>{item.task}</p> :
-                        <p>{item.task}</p>
+                        <>
+                            <div className="checkbox">✔</div>
+                            <p style={{textDecoration: "line-through", color: "red"}}>{item.task}</p>
+                        </> :
+                        <>
+                            <div className="checkbox" />
+                            <p>{item.task}</p>
+                        </>
                 }
             </div>
         )

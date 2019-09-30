@@ -12,7 +12,7 @@ export default class TodoForm extends React.Component {
                 render={props => {
                     return (
                         <Form>
-                            <Field name="addItemField" type="text" placeholder="Add to-do..."/>
+                            <Field name="addItemField" type="text" placeholder="+ Add to-do..." />
                             <button type="submit">Add</button>
                         </Form>
                     )

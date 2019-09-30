@@ -7,18 +7,98 @@ import ClearButtons from './components/TodoComponents/ClearButtons';
 
 const StyledToDoWiget = styled.div`
   margin: 0 auto;
-  background: lightgray;
+  border: 2px solid black;
+  border-radius: 10px;
   margin-top: 3rem;
   width: 25rem;
   height: 30rem;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .list-item {
-    &:hover {
-      cursor: pointer;
+
+  background: #8E0E00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1F1C18, #8E0E00);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #1F1C18, #8E0E00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  .title {
+    border-bottom: 2px solid black;
+    height: 10%;
+    width: 95%;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .list {
+    width: 100%;
+
+    .list-item {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem 0.5rem 1rem;
+    font-weight: bold;
+
+      .checkbox {
+        height: 0.8rem;
+        width: 0.8rem;
+        background: black;
+        margin-right: 0.5rem;
+        border-radius: 2px;
+        color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  form {
+    margin-left: 2.3rem;
+    width: 100%;
+
+    input {
+      border-radius: 2px;
+      margin-right: 0.5rem;
+      background: none;
+      max-width: 80%;
+      
+      ::placeholder {
+        color: black;
+      }
+    }
+  }
+
+  .clear-buttons {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2rem;
+    
+    button {
+      margin: 0 0.5rem 0 0.5rem;
     }
   }
 
   button {
+    padding: 0.2rem;
+    border-radius: 2px;
+    background: black;
+    color: maroon;
+    font-weight: bold;
+
     &:hover {
       cursor: pointer;
     }
@@ -47,15 +127,17 @@ class App extends React.Component {
   }
 
   addTodo = (formValues, actions) => {
-    const newTodo = {
-      task: formValues.addItemField,
-      id: Date.now(),
-      completed: false,
+    if (formValues.addItemField !== "") {
+      const newTodo = {
+        task: formValues.addItemField,
+        id: Date.now(),
+        completed: false,
+      }
+  
+      this.setState(currentState => ({
+        todoArray: currentState.todoArray.concat([newTodo])
+      }));
     }
-
-    this.setState(currentState => ({
-      todoArray: currentState.todoArray.concat([newTodo])
-    }));
 
     actions.resetForm();
   };
@@ -96,7 +178,7 @@ class App extends React.Component {
     return (
       <StyledToDoWiget>
         <div className="title">
-          <h2>To-Do List</h2>
+          <h1>To-Do List</h1>
         </div>
         <TodoList todoArray={todoArray} toggleCompleted={this.toggleCompleted}/>
         <TodoForm addTodo={this.addTodo}/>

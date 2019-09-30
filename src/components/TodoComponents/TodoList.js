@@ -5,14 +5,15 @@ import Todo from "./Todo";
 export default class TodoList extends React.Component {
     constructor(props) {
         super(props);
-        this.todoArray = props.todoArray;
     }
 
     render() {
+        const {todoArray} = this.props;
+        
         return (
             <>
-                {this.todoArray.map(item => (
-                    <Todo item={item} />
+                {todoArray.map(item => (
+                    <Todo item={item} key={item.id} />
                 ))}
             </>
         );

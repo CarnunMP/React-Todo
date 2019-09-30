@@ -34,10 +34,9 @@ class App extends React.Component {
   }
 
   addTodo = (event) => {
-    debugger
     const newTodo = {
       task: event.addItemField,
-      id: new Date(),
+      id: Date.now(),
       completed: false,
     }
 
@@ -48,7 +47,7 @@ class App extends React.Component {
 
   render() {
     const { todoArray } = this.state;
-    console.log(todoArray);
+
     return (
       <StyledToDoWiget>
         <div className="title">

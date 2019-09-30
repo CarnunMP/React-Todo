@@ -133,7 +133,6 @@ class App extends React.Component {
     super(props);
 
     const startingData = localStorage.getItem("todoArray");
-    console.log(startingData);
     if (startingData !== null) {
       this.state = {
         todoArray: JSON.parse(startingData),
